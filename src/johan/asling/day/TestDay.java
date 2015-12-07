@@ -13,25 +13,23 @@ public class TestDay {
 	
 	DayModel dayModel = new DayModel();
 	ApplicationRunner ar = new ApplicationRunner();
-	double delta = 0.0001;
 	
 	@Test
 	public void testShowValuesAsXEqualsSek(){
-		double euroRate = 0.100;
-		double dollarRate = 0.1082;
-		double poundRate = 1.3;
-		double frankRate = 0;
-		double yuanRate = 0.007;
-		
-		System.out.println(DayModel.getValuesAsXEqualsSek(euroRate));
-		
-		assertEquals(10.0, DayModel.getValuesAsXEqualsSek(euroRate), delta);
-		assertEquals(9.2421, DayModel.getValuesAsXEqualsSek(dollarRate), delta);
-		assertEquals(0.7692, DayModel.getValuesAsXEqualsSek(poundRate), delta);
-		assertEquals(-1, DayModel.getValuesAsXEqualsSek(frankRate), delta);
-		assertEquals(142.8571, DayModel.getValuesAsXEqualsSek(yuanRate), delta);
+		BigDecimal euroRate = new BigDecimal("0.1");
+		BigDecimal dollarRate = new BigDecimal("0.1082");
+		BigDecimal poundRate = new BigDecimal("1.3");
+		BigDecimal frankRate = BigDecimal.ZERO;
+		BigDecimal yuanRate = new BigDecimal("0.007");
+				
+		assertEquals(new BigDecimal("10.0000"), DayModel.getValuesAsXEqualsSek(euroRate));
+		assertEquals(new BigDecimal("9.2421"), DayModel.getValuesAsXEqualsSek(dollarRate));
+		assertEquals(new BigDecimal("0.7692"), DayModel.getValuesAsXEqualsSek(poundRate));
+		assertEquals(BigDecimal.ZERO, DayModel.getValuesAsXEqualsSek(frankRate));
+		assertEquals(new BigDecimal("142.8571"), DayModel.getValuesAsXEqualsSek(yuanRate));
 
 	}
+	
 	
 	@Test
 	public void testGetYearAverage(){

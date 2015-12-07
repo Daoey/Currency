@@ -13,24 +13,10 @@ public class DayModel {
 	 * @param rate The ratio between SEK and OTHERCURENCY.
 	 * @return The ratio between OTHERCURRENCY and SEK. Invalid rates return -1.
 	 */
-	public static double getValuesAsXEqualsSek(double rate) {
-		if(rate<=0)
-			return -1;
-		return round(1/rate, 4);
-	}
-	
-	/**Rounds a double to desired decimal places with RoundingMode.HALF_UP
-	 * 
-	 * @param value	The value to be rounded
-	 * @param decimalPlaces	Desired number of decimals
-	 * @return	The rounded value
-	 */
-	private static double round(double value, int decimalPlaces){
-		if (decimalPlaces < 0) throw new IllegalArgumentException();
-
-	    BigDecimal bd = new BigDecimal(value);
-	    bd = bd.setScale(decimalPlaces, RoundingMode.HALF_UP);
-	    return bd.doubleValue();
+	public static BigDecimal getValuesAsXEqualsSek(BigDecimal rate) {
+		if(rate.compareTo(BigDecimal.ZERO)<=0)
+			return BigDecimal.ZERO;
+		return BigDecimal.ONE.divide(rate, 4, RoundingMode.HALF_UP);
 	}
 	
 	/**Get average conversion rate this year in the desired currency
