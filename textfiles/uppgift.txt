@@ -1,0 +1,54 @@
+För betyg Godkänt
+Lämna in en zip fil som innehåller:
+Dokumentering av hur applikationen installeras och körs (howto.txt).
+Dokumentering av vad applikationen gör, dvs funktionalitet (readme.txt).
+Javadoc - Alla metoder i din(a) "model" klass(er) måste ha javadoc kommentarer, inte "databean" klass(er) eller din "view".
+Bygg script (ant) som compilerar din kod och skapar en jar fil som kan köra din applikation. Bygg filen ska kunna köras från vilken catalog som helst.
+
+Din applikation ska:
+Läsa in data (rates.csv).
+Data representerar hur mycket 1 SEK (svensk krona) är värd i en annan valuta. Tex: Den Nov 30, 2015 är 1 SEK värd 0.1083 euro, och 1 SEK är värd 0.1146 amerikansk dollar 
+Vi vill dock se hur många svenska kronor 1 EUR är värd, hur många SEK 1 USD är värd, osv. 
+Det räknas ut genom att räkna 1 delat med värdet i kolumnen, dvs enligt ovan
+1 SEK = 0.1083 EUR
+1 EUR = (1/0.1083) = 9.2336 SEK
+--------------------
+1 SEK = 0.1146 USD
+1 USD = (1/0.1146) = 8.7260 SEK
+
+Alla BigDecimal siffror ska rundas till 4 decimaler.
+
+1. Alla data ska konverteras så att värden presenteras som 1 EUR/USD/GBP/CHF/CNY = x SEK
+2. Räkna ut snitt per år för varje valuta i rates.csv.
+3. Räkna ut snitt per månad för varje valuta i rates.csv.
+4. Räkna ut snitt per angiven period för varje valuta i rates.csv.
+5. Räkna ut högsta och lägsta notering för ett år för varje valuta i rates.csv.
+5. Räkna ut högsta och lägsta notering för en månad för varje valuta i rates.csv.
+6. Räkna ut högsta och lägsta notering inom en angiven period för varje valuta i rates.csv.
+
+
+För betyg Väl Godkänt krävs Godkänt och att uppgifterna är inlämnade senast 2015-12-11 och motsvarande 16 poäng från följande uppgifter (inklusive eventuella bonus poäng från inlämningsuppgifter):
+
+X.1 Räkna ut vilken valuta som har störst rörelse (i SEK) jämfört med SEK mellan 2 datum. (5 poäng)
+X.2 Räkna ut vilken valuta som har störst rörelse (i SEK) jämfört med SEK inom en viss period. (5 poäng)
+X.3 Räkna ut vilken vecka under 2014 som en valuta har haft störst rörelse (i SEK) jämfört med SEK. (1 poäng per valuta)
+X.4 Räkna ut snitt per veckodag inom en viss period för varje valuta. (1 poäng per valuta)
+
+För den som är klar och vill ha en guldstjärna:
+Räkna ut vilka 2 valutor som haft störst rörelse (i SEK) mot varandra inom en viss period. (0 poäng)
+
+Alla metoder måste ha JUnit test.
+
+Metoder:
+1. public BigDecimal getYearAverage(String currency, int year)
+2. public BigDecimal getMonthAverage(String currency, int year, int month)
+3. public BigDecimal getAverage(String currency, LocalDate fromDate, LocalDate toDate)
+4. public BigDecimal getYearHigh(String currency, int year) och public BigDecimal getYearLow(String currency, int year)
+5. public BigDecimal getMonthHigh(String currency, int year, int month) och public BigDecimal getMonthLow(String currency, int year, int month)
+6. public BigDecimal getHighMark(String currency, LocalDate fromDate, LocalDate toDate) och public BigDecimal getLowMark(String currency, LocalDate fromDate, LocalDate toDate)
+
+Extra uppgifter:
+X.1 public String getMaxDeltaCurrency(LocalDate fromDate, LocalDate toDate)
+X.2 public String getMaxVolatilityCurrency(LocalDate fromDate, LocalDate toDate)
+X.3 public int getMaxVolatilityWeek(String currency, int year)
+X.4 public BigDecimal getAverage(String currency, LocalDate fromDate, LocalDate toDate, DayOfWeek weekDay)
