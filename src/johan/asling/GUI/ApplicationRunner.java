@@ -95,12 +95,13 @@ public class ApplicationRunner extends Application{
 		
 		Label fromLabel = new Label("Arbitrary period, from: ");
 		
-		DatePicker fromDatePicker = new DatePicker();
+		fromDatePicker = new DatePicker();
 		fromDatePicker.setValue(LocalDate.parse("2014-12-12"));
+		
 		
 		Label toLabel = new Label(" to: ");
 
-		DatePicker toDatePicker = new DatePicker();
+		toDatePicker = new DatePicker();
 		toDatePicker.setValue(LocalDate.parse("2014-12-15"));
 		
 		HBox datePickerRow = new HBox();
@@ -117,8 +118,36 @@ public class ApplicationRunner extends Application{
 			buttonResult.setText("Average euro rate this year was: 1 EUR = " + DayModel.getValuesAsXEqualsSek(bd) + " SEK");
 		});
 		
+		Button averageRateMonthEuro = new Button("Average this month");
+		averageRateMonthEuro.setOnAction(event->{
+			BigDecimal bd = dayModel.getMonthAverage("euro", mainDatePicker.getValue().getYear(), mainDatePicker.getValue().getMonthValue());
+			buttonResult.setText("Average euro rate this month and year was: 1 EUR = " + DayModel.getValuesAsXEqualsSek(bd) + " SEK");
+		});
+		
+		Button averageRateArbitraryEuro = new Button("Average this period");
+		averageRateArbitraryEuro.setOnAction(event->{
+			BigDecimal bd = dayModel.getAverage("euro", fromDatePicker.getValue(), toDatePicker.getValue());
+			buttonResult.setText("Average euro rate this period was: 1 EUR = " + DayModel.getValuesAsXEqualsSek(bd) + " SEK");
+		});
+		
+		Button getHighLowYearEuro = new Button("Highest/lowest this year");
+		getHighLowYearEuro.setOnAction(event->{
+			BigDecimal bdHigh = dayModel.getYearHigh("euro", mainDatePicker.getValue().getYear());
+			BigDecimal bdLow = dayModel.getYearLow("euro", mainDatePicker.getValue().getYear());
+			errorLabel.setText("");
+			buttonResult.setText("Highest rate: 1 EUR = " + DayModel.getValuesAsXEqualsSek(bdHigh) + " SEK and lowest: " + DayModel.getValuesAsXEqualsSek(bdLow) + " SEK");
+		});
+		
+		Button getHighLowArbitraryEuro = new Button("Highest/lowest this period");
+		getHighLowArbitraryEuro.setOnAction(event->{
+			BigDecimal bdHigh = dayModel.getHighMark("euro", fromDatePicker.getValue(), toDatePicker.getValue());
+			BigDecimal bdLow = dayModel.getLowMark("euro", fromDatePicker.getValue(), toDatePicker.getValue());
+			errorLabel.setText("");
+			buttonResult.setText("Highest rate: 1 EUR = " + DayModel.getValuesAsXEqualsSek(bdHigh) + " SEK and lowest: " + DayModel.getValuesAsXEqualsSek(bdLow) + " SEK");
+		});
+		
 		HBox euroRow = new HBox();
-		euroRow.getChildren().addAll(averageRateYearEuro);
+		euroRow.getChildren().addAll(averageRateYearEuro, averageRateMonthEuro, averageRateArbitraryEuro, getHighLowYearEuro, getHighLowArbitraryEuro);
 		return euroRow;
 	}
 
