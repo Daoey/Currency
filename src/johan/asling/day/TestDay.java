@@ -393,7 +393,11 @@ public class TestDay {
 			CHF: 3
 			CNY: 33
 		 */
-		;
+		assertEquals(9, dayModel.getMaxVolatilityWeek("euro", 2015));
+		//assertEquals(18, dayModel.getMaxVolatilityWeek("dollar", 2015));
+		assertEquals(18, dayModel.getMaxVolatilityWeek("pound", 2015));
+		assertEquals(3, dayModel.getMaxVolatilityWeek("frank", 2015));
+		assertEquals(33, dayModel.getMaxVolatilityWeek("yuan", 2015));
 	}
 	
 	@Test

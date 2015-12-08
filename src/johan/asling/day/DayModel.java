@@ -701,7 +701,62 @@ public class DayModel {
 	 }
 	 
 	 public int getMaxVolatilityWeek(String currency, int year){
-		 return 5;
+		 
+		 LocalDate fromDate;
+		 if(year == 2015)
+			 fromDate = LocalDate.parse("2014-12-29");
+		 else if(year == 2014)
+			 fromDate = LocalDate.parse("2013-12-30");
+		 else
+			 return 0;
+		 
+		 int maxVolatilityWeek = 0;
+		 int weekCounter = 1;
+		 BigDecimal volatility;
+		 BigDecimal maxVolatility = BigDecimal.ZERO;
+		 
+		 LocalDate toDate = fromDate.plusDays(7);
+		 System.out.println(toDate);
+		 
+		 while(toDate.isBefore(LocalDate.of(year + 1, 1, 4))){
+			 System.out.println("Test");
+			 volatility = getVolatilty(currency, fromDate, toDate);
+			 if(volatility.compareTo(maxVolatility)>0){
+				 maxVolatilityWeek = weekCounter;
+				 maxVolatility = volatility;
+			 }
+			 weekCounter++;
+			 fromDate = fromDate.plusDays(7);
+			 toDate = toDate.plusDays(7);
+
+		 }
+		 
+		 return maxVolatilityWeek;
+	 }
+	 
+	 private BigDecimal getVolatilty(String currency, LocalDate fromDate, LocalDate toDate){
+		 BigDecimal volatility;
+		 if(currency=="euro"){
+			 volatility = getLowMark("euro", fromDate, toDate).subtract(getHighMark("euro", fromDate, toDate));
+			 return volatility.abs();
+		 }
+		 if(currency=="dollar"){
+			 volatility = getLowMark("dollar", fromDate, toDate).subtract(getHighMark("dollar", fromDate, toDate));
+			 return volatility.abs();
+		 }
+		 if(currency=="pound"){
+			 volatility = getLowMark("pound", fromDate, toDate).subtract(getHighMark("pound", fromDate, toDate));
+			 return volatility.abs();
+		 }
+		 if(currency=="frank"){
+			 volatility = getLowMark("frank", fromDate, toDate).subtract(getHighMark("frank", fromDate, toDate));
+			 return volatility.abs();
+		 }
+		 if(currency=="yuan"){
+			 volatility = getLowMark("yuan", fromDate, toDate).subtract(getHighMark("yuan", fromDate, toDate));
+			 return volatility.abs();
+		 }
+		 return BigDecimal.ZERO;
 	 }
 	 
 	 public BigDecimal getAverage(String currency, LocalDate fromDate, LocalDate toDate, DayOfWeek weekDay){
