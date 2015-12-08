@@ -671,7 +671,33 @@ public class DayModel {
 	 }
 	 
 	 public String getMaxVolatilityCurrency(LocalDate fromDate, LocalDate toDate){
-		 return "hej";
+		 
+		 BigDecimal maxEuroVolatality = getLowMark("euro", fromDate, toDate).subtract(getHighMark("euro", fromDate, toDate));
+		 BigDecimal maxDollarVolatality = getLowMark("dollar", fromDate, toDate).subtract(getHighMark("dollar", fromDate, toDate));
+		 BigDecimal maxPoundVolatality = getLowMark("pound", fromDate, toDate).subtract(getHighMark("pound", fromDate, toDate));
+		 BigDecimal maxFrankVolatality = getLowMark("frank", fromDate, toDate).subtract(getHighMark("frank", fromDate, toDate));
+		 BigDecimal maxYuanVolatality = getLowMark("yuan", fromDate, toDate).subtract(getHighMark("yuan", fromDate, toDate));
+		 
+		 String currencyMaxVolatility = "EUR";
+		 BigDecimal maxVolatility = maxEuroVolatality.abs();
+		 
+		 if(maxVolatility.compareTo(maxDollarVolatality.abs())<0){
+			 maxVolatility = maxDollarVolatality.abs();
+			 currencyMaxVolatility = "USD";
+		 }
+		 if(maxVolatility.compareTo(maxPoundVolatality.abs())<0){
+			 maxVolatility = maxPoundVolatality.abs();
+			 currencyMaxVolatility = "GBP";
+		 }
+		 if(maxVolatility.compareTo(maxFrankVolatality.abs())<0){
+			 maxVolatility = maxFrankVolatality.abs();
+			 currencyMaxVolatility = "CHF";
+		 }
+		 if(maxVolatility.compareTo(maxYuanVolatality.abs())<0){
+			 maxVolatility = maxYuanVolatality.abs();
+			 currencyMaxVolatility = "CNY";
+		 }
+		 return currencyMaxVolatility;
 	 }
 	 
 	 public int getMaxVolatilityWeek(String currency, int year){

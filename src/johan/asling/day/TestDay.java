@@ -379,7 +379,8 @@ public class TestDay {
 		 * 	20151115 tom 20151016: GBP
 			20150519 - 20140911: CHF
 		 */
-		;
+		assertEquals("GBP", dayModel.getMaxVolatilityCurrency(LocalDate.parse("2015-10-16"), LocalDate.parse("2015-11-15")));
+		assertEquals("CHF", dayModel.getMaxVolatilityCurrency(LocalDate.parse("2014-09-11"), LocalDate.parse("2015-05-19")));
 	}
 	
 	@Test

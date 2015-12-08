@@ -372,6 +372,10 @@ public class ApplicationRunner extends Application{
 		});
 		
 		Button maxVolatalityCurrency = new Button("Get max volatality currency");
+		maxVolatalityCurrency.setOnAction(event->{
+			String currency = dayModel.getMaxVolatilityCurrency(fromDatePicker.getValue(), toDatePicker.getValue());
+			buttonResult.setText("The max volatility this period was: " + currency);
+		});
 		
 		HBox someMoreButtons = new HBox(maxDeltaCurrency, maxVolatalityCurrency);
 		
