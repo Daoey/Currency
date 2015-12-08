@@ -1,5 +1,9 @@
 package johan.asling.GUI;
 
+import johan.asling.day.Day;
+import johan.asling.day.DayModel;
+import johan.asling.readers.DayReader;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -13,9 +17,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import johan.asling.day.Day;
-import johan.asling.day.DayModel;
-import johan.asling.readers.DayReader;
 
 public class ApplicationRunner extends Application{
 	
