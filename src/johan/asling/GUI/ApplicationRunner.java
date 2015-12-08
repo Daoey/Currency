@@ -75,10 +75,11 @@ public class ApplicationRunner extends Application{
 		HBox yuanRow = getYuanRow();
 		Label yuanLabel = new Label("0 CNY = 0 SEK");
 		yuanRow.getChildren().add(0, yuanLabel);
-
+		
+		HBox someMoreButtonsrow = getSomeMoreButtons();
 				
 		VBox root = new VBox();
-		root.getChildren().addAll(programDescription, datePickerRow, errorLabel, euroRow, dollarRow, poundRow, frankRow, yuanRow, buttonResult);
+		root.getChildren().addAll(programDescription, datePickerRow, errorLabel, euroRow, dollarRow, poundRow, frankRow, yuanRow, someMoreButtonsrow, buttonResult);
 		root.setMinSize(900, 400);
 		
 		Scene scene = new Scene(root);
@@ -118,19 +119,19 @@ public class ApplicationRunner extends Application{
 		Button averageRateYearEuro = new Button("Average this year");
 		averageRateYearEuro.setOnAction(event->{
 			BigDecimal bd = dayModel.getYearAverage("euro", mainDatePicker.getValue().getYear());
-			buttonResult.setText("Average euro rate this year was: 1 EUR = " + DayModel.getValuesAsXEqualsSek(bd) + " SEK");
+			buttonResult.setText("Average euro rate this year was: 1 EUR = " + bd + " SEK");
 		});
 		
 		Button averageRateMonthEuro = new Button("Average this month");
 		averageRateMonthEuro.setOnAction(event->{
 			BigDecimal bd = dayModel.getMonthAverage("euro", mainDatePicker.getValue().getYear(), mainDatePicker.getValue().getMonthValue());
-			buttonResult.setText("Average euro rate this month and year was: 1 EUR = " + DayModel.getValuesAsXEqualsSek(bd) + " SEK");
+			buttonResult.setText("Average euro rate this month and year was: 1 EUR = " + bd + " SEK");
 		});
 		
 		Button averageRateArbitraryEuro = new Button("Average this period");
 		averageRateArbitraryEuro.setOnAction(event->{
 			BigDecimal bd = dayModel.getAverage("euro", fromDatePicker.getValue(), toDatePicker.getValue());
-			buttonResult.setText("Average euro rate this period was: 1 EUR = " + DayModel.getValuesAsXEqualsSek(bd) + " SEK");
+			buttonResult.setText("Average euro rate this period was: 1 EUR = " + bd + " SEK");
 		});
 		
 		Button getHighLowYearEuro = new Button("Highest/lowest this year");
@@ -138,7 +139,7 @@ public class ApplicationRunner extends Application{
 			BigDecimal bdHigh = dayModel.getYearHigh("euro", mainDatePicker.getValue().getYear());
 			BigDecimal bdLow = dayModel.getYearLow("euro", mainDatePicker.getValue().getYear());
 			errorLabel.setText("");
-			buttonResult.setText("Highest rate: 1 EUR = " + DayModel.getValuesAsXEqualsSek(bdHigh) + " SEK and lowest: " + DayModel.getValuesAsXEqualsSek(bdLow) + " SEK");
+			buttonResult.setText("Highest rate: 1 EUR = " + bdHigh + " SEK and lowest: " + bdLow + " SEK");
 		});
 		
 		Button getHighLowMonthEuro = new Button("Highest/lowest this month");
@@ -146,7 +147,7 @@ public class ApplicationRunner extends Application{
 			BigDecimal bdHigh = dayModel.getMonthHigh("euro", mainDatePicker.getValue().getYear(), mainDatePicker.getValue().getMonthValue());
 			BigDecimal bdLow = dayModel.getMonthLow("euro", mainDatePicker.getValue().getYear(), mainDatePicker.getValue().getMonthValue());
 			errorLabel.setText("");
-			buttonResult.setText("Highest rate: 1 EUR = " + DayModel.getValuesAsXEqualsSek(bdHigh) + " SEK and lowest: " + DayModel.getValuesAsXEqualsSek(bdLow) + " SEK");
+			buttonResult.setText("Highest rate: 1 EUR = " + bdHigh + " SEK and lowest: " +bdLow + " SEK");
 		});
 		
 		Button getHighLowArbitraryEuro = new Button("Highest/lowest this period");
@@ -154,8 +155,11 @@ public class ApplicationRunner extends Application{
 			BigDecimal bdHigh = dayModel.getHighMark("euro", fromDatePicker.getValue(), toDatePicker.getValue());
 			BigDecimal bdLow = dayModel.getLowMark("euro", fromDatePicker.getValue(), toDatePicker.getValue());
 			errorLabel.setText("");
-			buttonResult.setText("Highest rate: 1 EUR = " + DayModel.getValuesAsXEqualsSek(bdHigh) + " SEK and lowest: " + DayModel.getValuesAsXEqualsSek(bdLow) + " SEK");
+			buttonResult.setText("Highest rate: 1 EUR = " + bdHigh + " SEK and lowest: " + bdLow + " SEK");
 		});
+		
+		Button getMaxVolatilityWeek = new Button("Max volatility week");
+
 		
 		HBox euroRow = new HBox();
 		euroRow.getChildren().addAll(averageRateYearEuro, averageRateMonthEuro, averageRateArbitraryEuro, getHighLowYearEuro, getHighLowMonthEuro, getHighLowArbitraryEuro);
@@ -167,19 +171,19 @@ public class ApplicationRunner extends Application{
 		Button averageRateYearDollar = new Button("Average this year");
 		averageRateYearDollar.setOnAction(event->{
 			BigDecimal bd = dayModel.getYearAverage("dollar", mainDatePicker.getValue().getYear());
-			buttonResult.setText("Average dollar rate this year was: 1 USD = " + DayModel.getValuesAsXEqualsSek(bd) + " SEK");
+			buttonResult.setText("Average dollar rate this year was: 1 USD = " + bd + " SEK");
 		});
 		
 		Button averageRateMonthDollar = new Button("Average this month");
 		averageRateMonthDollar.setOnAction(event->{
 			BigDecimal bd = dayModel.getMonthAverage("dollar", mainDatePicker.getValue().getYear(), mainDatePicker.getValue().getMonthValue());
-			buttonResult.setText("Average dollar rate this month and year was: 1 USD = " + DayModel.getValuesAsXEqualsSek(bd) + " SEK");
+			buttonResult.setText("Average dollar rate this month and year was: 1 USD = " + bd + " SEK");
 		});
 		
 		Button averageRateArbitraryDollar = new Button("Average this period");
 		averageRateArbitraryDollar.setOnAction(event->{
 			BigDecimal bd = dayModel.getAverage("dollar", fromDatePicker.getValue(), toDatePicker.getValue());
-			buttonResult.setText("Average dollar rate this period was: 1 USD = " + DayModel.getValuesAsXEqualsSek(bd) + " SEK");
+			buttonResult.setText("Average dollar rate this period was: 1 USD = " + bd + " SEK");
 		});
 		
 		Button getHighLowYearDollar = new Button("Highest/lowest this year");
@@ -187,7 +191,7 @@ public class ApplicationRunner extends Application{
 			BigDecimal bdHigh = dayModel.getYearHigh("dollar", mainDatePicker.getValue().getYear());
 			BigDecimal bdLow = dayModel.getYearLow("dollar", mainDatePicker.getValue().getYear());
 			errorLabel.setText("");
-			buttonResult.setText("Highest rate: 1 USD = " + DayModel.getValuesAsXEqualsSek(bdHigh) + " SEK and lowest: " + DayModel.getValuesAsXEqualsSek(bdLow) + " SEK");
+			buttonResult.setText("Highest rate: 1 USD = " + bdHigh + " SEK and lowest: " + bdLow + " SEK");
 		});
 		
 		Button getHighLowMonthDollar = new Button("Highest/lowest this month");
@@ -195,7 +199,7 @@ public class ApplicationRunner extends Application{
 			BigDecimal bdHigh = dayModel.getMonthHigh("dollar", mainDatePicker.getValue().getYear(), mainDatePicker.getValue().getMonthValue());
 			BigDecimal bdLow = dayModel.getMonthLow("dollar", mainDatePicker.getValue().getYear(), mainDatePicker.getValue().getMonthValue());
 			errorLabel.setText("");
-			buttonResult.setText("Highest rate: 1 USD = " + DayModel.getValuesAsXEqualsSek(bdHigh) + " SEK and lowest: " + DayModel.getValuesAsXEqualsSek(bdLow) + " SEK");
+			buttonResult.setText("Highest rate: 1 USD = " + bdHigh + " SEK and lowest: " + bdLow + " SEK");
 		});
 		
 		Button getHighLowArbitraryDollar = new Button("Highest/lowest this period");
@@ -203,7 +207,7 @@ public class ApplicationRunner extends Application{
 			BigDecimal bdHigh = dayModel.getHighMark("dollar", fromDatePicker.getValue(), toDatePicker.getValue());
 			BigDecimal bdLow = dayModel.getLowMark("dollar", fromDatePicker.getValue(), toDatePicker.getValue());
 			errorLabel.setText("");
-			buttonResult.setText("Highest rate: 1 USD = " + DayModel.getValuesAsXEqualsSek(bdHigh) + " SEK and lowest: " + DayModel.getValuesAsXEqualsSek(bdLow) + " SEK");
+			buttonResult.setText("Highest rate: 1 USD = " + bdHigh + " SEK and lowest: " + bdLow + " SEK");
 		});
 		
 		HBox dollarRow = new HBox();
@@ -216,19 +220,19 @@ public class ApplicationRunner extends Application{
 		Button averageRateYearPound = new Button("Average this year");
 		averageRateYearPound.setOnAction(event->{
 			BigDecimal bd = dayModel.getYearAverage("pound", mainDatePicker.getValue().getYear());
-			buttonResult.setText("Average pound rate this year was: 1 GBP = " + DayModel.getValuesAsXEqualsSek(bd) + " SEK");
+			buttonResult.setText("Average pound rate this year was: 1 GBP = " + bd + " SEK");
 		});
 		
 		Button averageRateMonthPound = new Button("Average this month");
 		averageRateMonthPound.setOnAction(event->{
 			BigDecimal bd = dayModel.getMonthAverage("pound", mainDatePicker.getValue().getYear(), mainDatePicker.getValue().getMonthValue());
-			buttonResult.setText("Average pound rate this month and year was: 1 GBP = " + DayModel.getValuesAsXEqualsSek(bd) + " SEK");
+			buttonResult.setText("Average pound rate this month and year was: 1 GBP = " + bd + " SEK");
 		});
 		
 		Button averageRateArbitraryPound = new Button("Average this period");
 		averageRateArbitraryPound.setOnAction(event->{
 			BigDecimal bd = dayModel.getAverage("pound", fromDatePicker.getValue(), toDatePicker.getValue());
-			buttonResult.setText("Average pound rate this period was: 1 GBP = " + DayModel.getValuesAsXEqualsSek(bd) + " SEK");
+			buttonResult.setText("Average pound rate this period was: 1 GBP = " + bd + " SEK");
 		});
 		
 		Button getHighLowYearPound = new Button("Highest/lowest this year");
@@ -236,7 +240,7 @@ public class ApplicationRunner extends Application{
 			BigDecimal bdHigh = dayModel.getYearHigh("pound", mainDatePicker.getValue().getYear());
 			BigDecimal bdLow = dayModel.getYearLow("pound", mainDatePicker.getValue().getYear());
 			errorLabel.setText("");
-			buttonResult.setText("Highest rate: 1 GBP = " + DayModel.getValuesAsXEqualsSek(bdHigh) + " SEK and lowest: " + DayModel.getValuesAsXEqualsSek(bdLow) + " SEK");
+			buttonResult.setText("Highest rate: 1 GBP = " + bdHigh + " SEK and lowest: " + bdLow + " SEK");
 		});
 		
 		Button getHighLowMonthEuro = new Button("Highest/lowest this month");
@@ -244,7 +248,7 @@ public class ApplicationRunner extends Application{
 			BigDecimal bdHigh = dayModel.getMonthHigh("pound", mainDatePicker.getValue().getYear(), mainDatePicker.getValue().getMonthValue());
 			BigDecimal bdLow = dayModel.getMonthLow("pound", mainDatePicker.getValue().getYear(), mainDatePicker.getValue().getMonthValue());
 			errorLabel.setText("");
-			buttonResult.setText("Highest rate: 1 GBP = " + DayModel.getValuesAsXEqualsSek(bdHigh) + " SEK and lowest: " + DayModel.getValuesAsXEqualsSek(bdLow) + " SEK");
+			buttonResult.setText("Highest rate: 1 GBP = " + bdHigh + " SEK and lowest: " + bdLow + " SEK");
 		});
 		
 		Button getHighLowArbitraryPound = new Button("Highest/lowest this period");
@@ -252,7 +256,7 @@ public class ApplicationRunner extends Application{
 			BigDecimal bdHigh = dayModel.getHighMark("pound", fromDatePicker.getValue(), toDatePicker.getValue());
 			BigDecimal bdLow = dayModel.getLowMark("pound", fromDatePicker.getValue(), toDatePicker.getValue());
 			errorLabel.setText("");
-			buttonResult.setText("Highest rate: 1 GBP = " + DayModel.getValuesAsXEqualsSek(bdHigh) + " SEK and lowest: " + DayModel.getValuesAsXEqualsSek(bdLow) + " SEK");
+			buttonResult.setText("Highest rate: 1 GBP = " + bdHigh + " SEK and lowest: " + bdLow + " SEK");
 		});
 		
 		HBox poundRow = new HBox();
@@ -265,19 +269,19 @@ public class ApplicationRunner extends Application{
 		Button averageRateYearFrank = new Button("Average this year");
 		averageRateYearFrank.setOnAction(event->{
 			BigDecimal bd = dayModel.getYearAverage("frank", mainDatePicker.getValue().getYear());
-			buttonResult.setText("Average frank rate this year was: 1 CHF = " + DayModel.getValuesAsXEqualsSek(bd) + " SEK");
+			buttonResult.setText("Average frank rate this year was: 1 CHF = " + bd + " SEK");
 		});
 		
 		Button averageRateMonthFrank = new Button("Average this month");
 		averageRateMonthFrank.setOnAction(event->{
 			BigDecimal bd = dayModel.getMonthAverage("frank", mainDatePicker.getValue().getYear(), mainDatePicker.getValue().getMonthValue());
-			buttonResult.setText("Average frank rate this month and year was: 1 CHF = " + DayModel.getValuesAsXEqualsSek(bd) + " SEK");
+			buttonResult.setText("Average frank rate this month and year was: 1 CHF = " + bd + " SEK");
 		});
 		
 		Button averageRateArbitraryFrank = new Button("Average this period");
 		averageRateArbitraryFrank.setOnAction(event->{
 			BigDecimal bd = dayModel.getAverage("frank", fromDatePicker.getValue(), toDatePicker.getValue());
-			buttonResult.setText("Average frank rate this period was: 1 CHF = " + DayModel.getValuesAsXEqualsSek(bd) + " SEK");
+			buttonResult.setText("Average frank rate this period was: 1 CHF = " + bd + " SEK");
 		});
 		
 		Button getHighLowYearFrank = new Button("Highest/lowest this year");
@@ -285,7 +289,7 @@ public class ApplicationRunner extends Application{
 			BigDecimal bdHigh = dayModel.getYearHigh("frank", mainDatePicker.getValue().getYear());
 			BigDecimal bdLow = dayModel.getYearLow("frank", mainDatePicker.getValue().getYear());
 			errorLabel.setText("");
-			buttonResult.setText("Highest rate: 1 CHF = " + DayModel.getValuesAsXEqualsSek(bdHigh) + " SEK and lowest: " + DayModel.getValuesAsXEqualsSek(bdLow) + " SEK");
+			buttonResult.setText("Highest rate: 1 CHF = " + bdHigh + " SEK and lowest: " + bdLow + " SEK");
 		});
 		
 		Button getHighLowMonthFrank = new Button("Highest/lowest this month");
@@ -293,7 +297,7 @@ public class ApplicationRunner extends Application{
 			BigDecimal bdHigh = dayModel.getMonthHigh("frank", mainDatePicker.getValue().getYear(), mainDatePicker.getValue().getMonthValue());
 			BigDecimal bdLow = dayModel.getMonthLow("frank", mainDatePicker.getValue().getYear(), mainDatePicker.getValue().getMonthValue());
 			errorLabel.setText("");
-			buttonResult.setText("Highest rate: 1 CHF = " + DayModel.getValuesAsXEqualsSek(bdHigh) + " SEK and lowest: " + DayModel.getValuesAsXEqualsSek(bdLow) + " SEK");
+			buttonResult.setText("Highest rate: 1 CHF = " + bdHigh + " SEK and lowest: " + bdLow + " SEK");
 		});
 		
 		Button getHighLowArbitraryFrank = new Button("Highest/lowest this period");
@@ -301,7 +305,7 @@ public class ApplicationRunner extends Application{
 			BigDecimal bdHigh = dayModel.getHighMark("frank", fromDatePicker.getValue(), toDatePicker.getValue());
 			BigDecimal bdLow = dayModel.getLowMark("frank", fromDatePicker.getValue(), toDatePicker.getValue());
 			errorLabel.setText("");
-			buttonResult.setText("Highest rate: 1 CHF = " + DayModel.getValuesAsXEqualsSek(bdHigh) + " SEK and lowest: " + DayModel.getValuesAsXEqualsSek(bdLow) + " SEK");
+			buttonResult.setText("Highest rate: 1 CHF = " + bdHigh + " SEK and lowest: " + bdLow + " SEK");
 		});
 		
 		HBox frankRow = new HBox();
@@ -314,19 +318,19 @@ public class ApplicationRunner extends Application{
 		Button averageRateYearYuan = new Button("Average this year");
 		averageRateYearYuan.setOnAction(event->{
 			BigDecimal bd = dayModel.getYearAverage("yuan", mainDatePicker.getValue().getYear());
-			buttonResult.setText("Average yuan rate this year was: 1 CNY = " + DayModel.getValuesAsXEqualsSek(bd) + " SEK");
+			buttonResult.setText("Average yuan rate this year was: 1 CNY = " + bd + " SEK");
 		});
 		
 		Button averageRateMonthYuan = new Button("Average this month");
 		averageRateMonthYuan.setOnAction(event->{
 			BigDecimal bd = dayModel.getMonthAverage("yuan", mainDatePicker.getValue().getYear(), mainDatePicker.getValue().getMonthValue());
-			buttonResult.setText("Average yuan rate this month and year was: 1 CNY = " + DayModel.getValuesAsXEqualsSek(bd) + " SEK");
+			buttonResult.setText("Average yuan rate this month and year was: 1 CNY = " + bd + " SEK");
 		});
 		
 		Button averageRateArbitraryYuan = new Button("Average this period");
 		averageRateArbitraryYuan.setOnAction(event->{
 			BigDecimal bd = dayModel.getAverage("yuan", fromDatePicker.getValue(), toDatePicker.getValue());
-			buttonResult.setText("Average yuan rate this period was: 1 CNY = " + DayModel.getValuesAsXEqualsSek(bd) + " SEK");
+			buttonResult.setText("Average yuan rate this period was: 1 CNY = " + bd + " SEK");
 		});
 		
 		Button getHighLowYearYuan = new Button("Highest/lowest this year");
@@ -334,7 +338,7 @@ public class ApplicationRunner extends Application{
 			BigDecimal bdHigh = dayModel.getYearHigh("yuan", mainDatePicker.getValue().getYear());
 			BigDecimal bdLow = dayModel.getYearLow("yuan", mainDatePicker.getValue().getYear());
 			errorLabel.setText("");
-			buttonResult.setText("Highest rate: 1 CNY = " + DayModel.getValuesAsXEqualsSek(bdHigh) + " SEK and lowest: " + DayModel.getValuesAsXEqualsSek(bdLow) + " SEK");
+			buttonResult.setText("Highest rate: 1 CNY = " + bdHigh + " SEK and lowest: " + bdLow + " SEK");
 		});
 		
 		Button getHighLowMonthYuan = new Button("Highest/lowest this month");
@@ -342,7 +346,7 @@ public class ApplicationRunner extends Application{
 			BigDecimal bdHigh = dayModel.getMonthHigh("yuan", mainDatePicker.getValue().getYear(), mainDatePicker.getValue().getMonthValue());
 			BigDecimal bdLow = dayModel.getMonthLow("yuan", mainDatePicker.getValue().getYear(), mainDatePicker.getValue().getMonthValue());
 			errorLabel.setText("");
-			buttonResult.setText("Highest rate: 1 CNY = " + DayModel.getValuesAsXEqualsSek(bdHigh) + " SEK and lowest: " + DayModel.getValuesAsXEqualsSek(bdLow) + " SEK");
+			buttonResult.setText("Highest rate: 1 CNY = " + bdHigh + " SEK and lowest: " + bdLow + " SEK");
 		});
 		
 		Button getHighLowArbitraryYuan = new Button("Highest/lowest this period");
@@ -350,12 +354,28 @@ public class ApplicationRunner extends Application{
 			BigDecimal bdHigh = dayModel.getHighMark("yuan", fromDatePicker.getValue(), toDatePicker.getValue());
 			BigDecimal bdLow = dayModel.getLowMark("yuan", fromDatePicker.getValue(), toDatePicker.getValue());
 			errorLabel.setText("");
-			buttonResult.setText("Highest rate: 1 CNY = " + DayModel.getValuesAsXEqualsSek(bdHigh) + " SEK and lowest: " + DayModel.getValuesAsXEqualsSek(bdLow) + " SEK");
+			buttonResult.setText("Highest rate: 1 CNY = " + bdHigh + " SEK and lowest: " + bdLow + " SEK");
 		});
 		
+				
 		HBox yuanRow = new HBox();
 		yuanRow.getChildren().addAll(averageRateYearYuan, averageRateMonthYuan, averageRateArbitraryYuan, getHighLowYearYuan, getHighLowMonthYuan, getHighLowArbitraryYuan);
 		return yuanRow;
+	}
+	
+	private HBox getSomeMoreButtons() {
+		
+		Button maxDeltaCurrency = new Button("Get max delta currency");
+		maxDeltaCurrency.setOnAction(event->{
+			String currency = dayModel.getMaxDeltaCurrency(fromDatePicker.getValue(), toDatePicker.getValue());
+			buttonResult.setText("The max delta currency this period was: " + currency);
+		});
+		
+		Button maxVolatalityCurrency = new Button("Get max volatality currency");
+		
+		HBox someMoreButtons = new HBox(maxDeltaCurrency, maxVolatalityCurrency);
+		
+		return someMoreButtons;
 	}
 
 	private void updateText(Label euroLabel, Label dollarLabel, Label poundLabel, Label frankLabel, Label yuanLabel) {

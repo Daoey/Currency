@@ -30,13 +30,13 @@ public class TestDayReader {
 		}
 		
 		assertEquals(3, daysRead.size());
-		assertEquals(0.1083, daysRead.get(0).getEuroRate(), 0.0001);
-		assertEquals(0.1144 ,daysRead.get(1).getDollarRate(), 0.0001);
+		assertEquals("0.1083", daysRead.get(0).getEuroRate());
+		assertEquals("0.1144" ,daysRead.get(1).getDollarRate());
 		assertEquals(LocalDate.parse("2015-11-30"), daysRead.get(0).getDate());
 		assertEquals(LocalDate.parse("2015-11-28"), daysRead.get(2).getDate());
-		assertEquals(0.1179, daysRead.get(1).getFrankRate(), 0.0001);
-		assertEquals(0.0761, daysRead.get(2).getPoundRate(), 0.0001);
-		assertEquals(0.7319, daysRead.get(2).getYuanRate(), 0.0001);
+		assertEquals("0.1179", daysRead.get(1).getFrankRate());
+		assertEquals("0.0761", daysRead.get(2).getPoundRate());
+		assertEquals("0.7319", daysRead.get(2).getYuanRate());
 	}
 	
 	@Test
@@ -45,14 +45,5 @@ public class TestDayReader {
 		thrown.expectMessage("Incorrect file name or path");
 		@SuppressWarnings("unused")	//suppressed since it is used to check for exception
 		Vector<Day> daysRead = DayReader.readDays("textfiles/testFiles/wrongFileName.csv");
-	}
-	
-	@Test
-	public void testReadCorruptFile() throws NumberFormatException, IOException{
-		thrown.expect(NumberFormatException.class);
-		thrown.expectMessage("Error parsing double, check textFiles/testFiles/corruptFile.csv at line 2");
-		@SuppressWarnings("unused")	//suppressed since it is used to check for exception
-		Vector<Day> daysRead = DayReader.readDays("textFiles/testFiles/corruptFile.csv");
-		
 	}
 }

@@ -4,13 +4,13 @@ import java.time.LocalDate;
 
 public class Day {
 	private LocalDate date;
-	private double euroRate;
-	private double dollarRate;
-	private double poundRate;
-	private double frankRate;
-	private double yuanRate;
+	private String euroRate;
+	private String dollarRate;
+	private String poundRate;
+	private String frankRate;
+	private String yuanRate;
 	
-	public Day(LocalDate date, double euroRate, double dollarRate, double poundRate, double frankRate, double yuanRate){
+	public Day(LocalDate date, String euroRate, String dollarRate, String poundRate, String frankRate, String yuanRate){
 		this.date = date;
 		this.euroRate = euroRate;
 		this.dollarRate = dollarRate;
@@ -32,43 +32,43 @@ public class Day {
 		this.date = date;
 	}
 
-	public double getEuroRate() {
+	public String getEuroRate() {
 		return euroRate;
 	}
 
-	public void setEuroRate(double euroRate) {
+	public void setEuroRate(String euroRate) {
 		this.euroRate = euroRate;
 	}
 
-	public double getDollarRate() {
+	public String getDollarRate() {
 		return dollarRate;
 	}
 
-	public void setDollarRate(double dollarRate) {
+	public void setDollarRate(String dollarRate) {
 		this.dollarRate = dollarRate;
 	}
 
-	public double getPoundRate() {
+	public String getPoundRate() {
 		return poundRate;
 	}
 
-	public void setPoundRate(double poundRate) {
+	public void setPoundRate(String poundRate) {
 		this.poundRate = poundRate;
 	}
 
-	public double getFrankRate() {
+	public String getFrankRate() {
 		return frankRate;
 	}
 
-	public void setFrankRate(double frankRate) {
+	public void setFrankRate(String frankRate) {
 		this.frankRate = frankRate;
 	}
 
-	public double getYuanRate() {
+	public String getYuanRate() {
 		return yuanRate;
 	}
 
-	public void setYuanRate(double yuanRate) {
+	public void setYuanRate(String yuanRate) {
 		this.yuanRate = yuanRate;
 	}
 }

@@ -2,6 +2,7 @@ package johan.asling.day;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 import johan.asling.GUI.ApplicationRunner;
@@ -31,7 +32,7 @@ public class DayModel {
 		if(currency=="euro"){
 			for(int i=0; i<ApplicationRunner.days.size(); i++){
 				if(ApplicationRunner.days.elementAt(i).getDate().getYear()==year){
-					rates = rates.add(new BigDecimal(ApplicationRunner.days.get(i).getEuroRate()));
+					rates = rates.add(DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getEuroRate())));
 					dayCounter++;
 				}
 					
@@ -40,7 +41,7 @@ public class DayModel {
 		else if(currency=="dollar"){
 			for(int i=0; i<ApplicationRunner.days.size(); i++){
 				if(ApplicationRunner.days.elementAt(i).getDate().getYear()==year){
-					rates = rates.add(new BigDecimal(ApplicationRunner.days.get(i).getDollarRate()));
+					rates = rates.add(DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getDollarRate())));
 					dayCounter++;
 				}
 					
@@ -49,7 +50,7 @@ public class DayModel {
 		else if(currency=="pound"){
 			for(int i=0; i<ApplicationRunner.days.size(); i++){
 				if(ApplicationRunner.days.elementAt(i).getDate().getYear()==year){
-					rates = rates.add(new BigDecimal(ApplicationRunner.days.get(i).getPoundRate()));
+					rates = rates.add(DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getPoundRate())));
 					dayCounter++;
 				}
 					
@@ -58,7 +59,7 @@ public class DayModel {
 		else if(currency=="frank"){
 			for(int i=0; i<ApplicationRunner.days.size(); i++){
 				if(ApplicationRunner.days.elementAt(i).getDate().getYear()==year){
-					rates = rates.add(new BigDecimal(ApplicationRunner.days.get(i).getFrankRate()));
+					rates = rates.add(DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getFrankRate())));
 					dayCounter++;
 				}
 					
@@ -67,7 +68,7 @@ public class DayModel {
 		else if(currency=="yuan"){
 			for(int i=0; i<ApplicationRunner.days.size(); i++){
 				if(ApplicationRunner.days.elementAt(i).getDate().getYear()==year){
-					rates = rates.add(new BigDecimal(ApplicationRunner.days.get(i).getYuanRate()));
+					rates = rates.add(DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getYuanRate())));
 					dayCounter++;
 				}
 					
@@ -96,7 +97,7 @@ public class DayModel {
 		if(currency=="euro"){
 			for(int i=0; i<ApplicationRunner.days.size(); i++){
 				if(ApplicationRunner.days.elementAt(i).getDate().getYear()==year && ApplicationRunner.days.elementAt(i).getDate().getMonthValue()==month){
-					rates = rates.add(new BigDecimal(ApplicationRunner.days.get(i).getEuroRate()));
+					rates = rates.add(DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getEuroRate())));
 					dayCounter++;
 				}
 					
@@ -105,7 +106,7 @@ public class DayModel {
 		else if(currency=="dollar"){
 			for(int i=0; i<ApplicationRunner.days.size(); i++){
 				if(ApplicationRunner.days.elementAt(i).getDate().getYear()==year && ApplicationRunner.days.elementAt(i).getDate().getMonthValue()==month){
-					rates = rates.add(new BigDecimal(ApplicationRunner.days.get(i).getDollarRate()));
+					rates = rates.add(DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getDollarRate())));
 					dayCounter++;
 				}
 					
@@ -114,7 +115,7 @@ public class DayModel {
 		else if(currency=="pound"){
 			for(int i=0; i<ApplicationRunner.days.size(); i++){
 				if(ApplicationRunner.days.elementAt(i).getDate().getYear()==year && ApplicationRunner.days.elementAt(i).getDate().getMonthValue()==month){
-					rates = rates.add(new BigDecimal(ApplicationRunner.days.get(i).getPoundRate()));
+					rates = rates.add(DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getPoundRate())));
 					dayCounter++;
 				}
 					
@@ -123,7 +124,7 @@ public class DayModel {
 		else if(currency=="frank"){
 			for(int i=0; i<ApplicationRunner.days.size(); i++){
 				if(ApplicationRunner.days.elementAt(i).getDate().getYear()==year && ApplicationRunner.days.elementAt(i).getDate().getMonthValue()==month){
-					rates = rates.add(new BigDecimal(ApplicationRunner.days.get(i).getFrankRate()));
+					rates = rates.add(DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getFrankRate())));
 					dayCounter++;
 				}
 					
@@ -132,7 +133,7 @@ public class DayModel {
 		else if(currency=="yuan"){
 			for(int i=0; i<ApplicationRunner.days.size(); i++){
 				if(ApplicationRunner.days.elementAt(i).getDate().getYear()==year && ApplicationRunner.days.elementAt(i).getDate().getMonthValue()==month){
-					rates = rates.add(new BigDecimal(ApplicationRunner.days.get(i).getYuanRate()));
+					rates = rates.add(DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getYuanRate())));
 					dayCounter++;
 				}
 					
@@ -161,7 +162,7 @@ public class DayModel {
 			for(int i=0; i<ApplicationRunner.days.size(); i++){
 				if((ApplicationRunner.days.elementAt(i).getDate().isAfter(fromDate) && ApplicationRunner.days.elementAt(i).getDate().isBefore(toDate))
 						|| ApplicationRunner.days.elementAt(i).getDate().isEqual(fromDate) || ApplicationRunner.days.elementAt(i).getDate().isEqual(toDate)){
-					rates = rates.add(new BigDecimal(ApplicationRunner.days.get(i).getEuroRate()));
+					rates = rates.add(DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getEuroRate())));
 					dayCounter++;
 				}
 			}
@@ -170,7 +171,7 @@ public class DayModel {
 			for(int i=0; i<ApplicationRunner.days.size(); i++){
 				if((ApplicationRunner.days.elementAt(i).getDate().isAfter(fromDate) && ApplicationRunner.days.elementAt(i).getDate().isBefore(toDate))
 						|| ApplicationRunner.days.elementAt(i).getDate().isEqual(fromDate) || ApplicationRunner.days.elementAt(i).getDate().isEqual(toDate)){
-					rates = rates.add(new BigDecimal(ApplicationRunner.days.get(i).getDollarRate()));
+					rates = rates.add(DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getDollarRate())));
 					dayCounter++;
 				}
 			}
@@ -179,7 +180,7 @@ public class DayModel {
 			for(int i=0; i<ApplicationRunner.days.size(); i++){
 				if((ApplicationRunner.days.elementAt(i).getDate().isAfter(fromDate) && ApplicationRunner.days.elementAt(i).getDate().isBefore(toDate))
 						|| ApplicationRunner.days.elementAt(i).getDate().isEqual(fromDate) || ApplicationRunner.days.elementAt(i).getDate().isEqual(toDate)){
-					rates = rates.add(new BigDecimal(ApplicationRunner.days.get(i).getPoundRate()));
+					rates = rates.add(DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getPoundRate())));
 					dayCounter++;
 				}
 			}
@@ -188,7 +189,7 @@ public class DayModel {
 			for(int i=0; i<ApplicationRunner.days.size(); i++){
 				if((ApplicationRunner.days.elementAt(i).getDate().isAfter(fromDate) && ApplicationRunner.days.elementAt(i).getDate().isBefore(toDate))
 						|| ApplicationRunner.days.elementAt(i).getDate().isEqual(fromDate) || ApplicationRunner.days.elementAt(i).getDate().isEqual(toDate)){
-					rates = rates.add(new BigDecimal(ApplicationRunner.days.get(i).getFrankRate()));
+					rates = rates.add(DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getFrankRate())));
 					dayCounter++;
 				}
 			}
@@ -197,7 +198,7 @@ public class DayModel {
 			for(int i=0; i<ApplicationRunner.days.size(); i++){
 				if((ApplicationRunner.days.elementAt(i).getDate().isAfter(fromDate) && ApplicationRunner.days.elementAt(i).getDate().isBefore(toDate))
 						|| ApplicationRunner.days.elementAt(i).getDate().isEqual(fromDate) || ApplicationRunner.days.elementAt(i).getDate().isEqual(toDate)){
-					rates = rates.add(new BigDecimal(ApplicationRunner.days.get(i).getYuanRate()));
+					rates = rates.add(DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getYuanRate())));
 					dayCounter++;
 				}
 			}
@@ -269,7 +270,7 @@ public class DayModel {
 			}
 		}
 
-		return highest.setScale(4, RoundingMode.HALF_UP);
+		return DayModel.getValuesAsXEqualsSek(highest.setScale(4, RoundingMode.HALF_UP));
 	 }
 	 
 	 
@@ -332,7 +333,7 @@ public class DayModel {
 				}
 			}
 		}
-		 return lowest.setScale(4, RoundingMode.HALF_UP);
+		 return DayModel.getValuesAsXEqualsSek(lowest.setScale(4, RoundingMode.HALF_UP));
 	 }
 	 
 	 /**This method returns the highest rate this year and month
@@ -395,7 +396,7 @@ public class DayModel {
 				}
 			 }
 		 
-		 return highest.setScale(4, RoundingMode.HALF_UP);
+		 return DayModel.getValuesAsXEqualsSek(highest.setScale(4, RoundingMode.HALF_UP));
 	 }
 	 
 	 /**This method returns the lowest rate this year and month
@@ -459,7 +460,7 @@ public class DayModel {
 				}
 			}
 		 
-		 return lowest.setScale(4, RoundingMode.HALF_UP);
+		 return DayModel.getValuesAsXEqualsSek(lowest.setScale(4, RoundingMode.HALF_UP));
 	 }
 	 
 	 /**This method returns the highest rate this period. Both dates are inclusively
@@ -531,7 +532,7 @@ public class DayModel {
 				}
 			}
 		
-		return highest.setScale(4, RoundingMode.HALF_UP);
+		return DayModel.getValuesAsXEqualsSek(highest.setScale(4, RoundingMode.HALF_UP));
 	 }
 	 
 	 /**This method returns the lowest rate this period. Both dates are inclusively
@@ -603,8 +604,82 @@ public class DayModel {
 				}
 		}
 		
-		return lowest.setScale(4, RoundingMode.HALF_UP);
+		return DayModel.getValuesAsXEqualsSek(lowest.setScale(4, RoundingMode.HALF_UP));
+	 }
+	 
+	 public String getMaxDeltaCurrency(LocalDate fromDate, LocalDate toDate){
 		 
+		 BigDecimal euroRateFirst = BigDecimal.ZERO;
+		 BigDecimal dollarRateFirst = BigDecimal.ZERO;
+		 BigDecimal poundRateFirst = BigDecimal.ZERO;
+		 BigDecimal frankRateFirst = BigDecimal.ZERO;
+		 BigDecimal yuanRateFirst = BigDecimal.ZERO;
+
+		 BigDecimal euroRateAfter = BigDecimal.ZERO;
+		 BigDecimal dollarRateAfter = BigDecimal.ZERO;
+		 BigDecimal poundRateAfter = BigDecimal.ZERO;
+		 BigDecimal frankRateAfter = BigDecimal.ZERO;
+		 BigDecimal yuanRateAfter = BigDecimal.ZERO;
+
+		 
+		 for(int i=0; i<ApplicationRunner.days.size(); i++){
+			 if(fromDate.compareTo(ApplicationRunner.days.elementAt(i).getDate())==0){
+				 euroRateFirst = DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getEuroRate()));
+				 dollarRateFirst = DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getDollarRate()));
+				 poundRateFirst = DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getPoundRate()));
+				 frankRateFirst = DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getFrankRate()));
+				 yuanRateFirst = DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getYuanRate()));
+			 }
+			 if(toDate.compareTo(ApplicationRunner.days.elementAt(i).getDate())==0){
+				 euroRateAfter = DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getEuroRate()));
+				 dollarRateAfter = DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getDollarRate()));
+				 poundRateAfter = DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getPoundRate()));
+				 frankRateAfter = DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getFrankRate()));
+				 yuanRateAfter = DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getYuanRate()));
+			 }
+		 }
+		 
+		 BigDecimal difference = euroRateAfter.subtract(euroRateFirst);
+		 BigDecimal maxDelta = difference.abs();
+		 String maxDeltaCurrency = "EUR";
+		 
+		 difference = dollarRateFirst.subtract(dollarRateAfter);
+		 if(maxDelta.compareTo(difference.abs())<0){
+			 maxDeltaCurrency = "USD";
+			 maxDelta = difference.abs();
+		 }
+		 
+		 difference = poundRateFirst.subtract(poundRateAfter);
+		 if(maxDelta.compareTo(difference.abs())<0){
+			 maxDelta = difference.abs();
+			 maxDeltaCurrency = "GBP";
+		 }
+		 
+		 difference = frankRateFirst.subtract(frankRateAfter);
+		 if(maxDelta.compareTo(difference.abs())<0){
+			 maxDelta = difference.abs();
+			 maxDeltaCurrency = "CHF";
+		 }
+		 
+		 difference = yuanRateFirst.subtract(yuanRateAfter);
+		 if(maxDelta.compareTo(difference.abs())<0){
+			 maxDeltaCurrency = "CNY";
+			 maxDelta = difference.abs();
+		 }
+		 
+		return maxDeltaCurrency;
+	 }
+	 
+	 public String getMaxVolatilityCurrency(LocalDate fromDate, LocalDate toDate){
+		 return "hej";
+	 }
+	 
+	 public int getMaxVolatilityWeek(String currency, int year){
+		 return 5;
+	 }
+	 
+	 public BigDecimal getAverage(String currency, LocalDate fromDate, LocalDate toDate, DayOfWeek weekDay){
+		 return BigDecimal.ZERO;
 	 }
 
 }

@@ -20,19 +20,54 @@ Alla BigDecimal siffror ska rundas till 4 decimaler.
 
 1. Alla data ska konverteras så att värden presenteras som 1 EUR/USD/GBP/CHF/CNY = x SEK
 2. Räkna ut snitt per år för varje valuta i rates.csv.
+2013 USD = 6.5455
+2014 GBP = 11.2967
+2015 CNY = 1.3580
 3. Räkna ut snitt per månad för varje valuta i rates.csv.
+Mar 2014 CHF = 7.2848
+Sep 2014 EUR = 9.1952
+Feb 2015 USD = 8.3568
 4. Räkna ut snitt per angiven period för varje valuta i rates.csv.
+7 nov 2014 - 25 jan 2015	GBP = 11.9571
 5. Räkna ut högsta och lägsta notering för ett år för varje valuta i rates.csv.
+2014 CHF = 7.9302 - 7.1073
 5. Räkna ut högsta och lägsta notering för en månad för varje valuta i rates.csv.
+jun 2015 Eur = 9.3897 - 9.1996
 6. Räkna ut högsta och lägsta notering inom en angiven period för varje valuta i rates.csv.
+17 jan 2014 - 3 mar 2015 USD = 8.4246 - 6.3492
 
 
 För betyg Väl Godkänt krävs Godkänt och att uppgifterna är inlämnade senast 2015-12-11 och motsvarande 16 poäng från följande uppgifter (inklusive eventuella bonus poäng från inlämningsuppgifter):
 
 X.1 Räkna ut vilken valuta som har störst rörelse (i SEK) jämfört med SEK mellan 2 datum. (5 poäng)
+
+2015-11-05 - 2015-11-15 USD
+2014-09-11 - 2015-05-19 GBP (09 stod lite otydligt)
+
+Jämför mellan två datum date1 och date2 delta
+
 X.2 Räkna ut vilken valuta som har störst rörelse (i SEK) jämfört med SEK inom en viss period. (5 poäng)
+
+2015-10-16 - 2015-11-15 GBP
+2014-09-11 - 2015-05-19 CHF
+
+Skillnad max och min mellan 2 datum, högsta och lägsta notering inom intervallet
+
 X.3 Räkna ut vilken vecka under 2014 som en valuta har haft störst rörelse (i SEK) jämfört med SEK. (1 poäng per valuta)
+
+2015 (vi ska göra för 2014)
+EUR 9
+USD 18
+GBP	18
+CHF	3
+CNY	33
+
+Viktigt att lista ut vilken första dagen är av vecka 1
+
 X.4 Räkna ut snitt per veckodag inom en viss period för varje valuta. (1 poäng per valuta)
+
+2014-02-02 - 2015-05-15
+CNY wednesday
 
 För den som är klar och vill ha en guldstjärna:
 Räkna ut vilka 2 valutor som haft störst rörelse (i SEK) mot varandra inom en viss period. (0 poäng)

@@ -22,12 +22,7 @@ public class DayReader{
 			while((line = bufferedReader.readLine()) != null){	//continue reading till end of file
 				String[] parts = line.split(";");
 				LocalDate date = getLocalDate(parts[0]);
-				double euroRate = Double.parseDouble(parts[1]);
-				double dollarRate = Double.parseDouble(parts[2]);
-				double poundRate = Double.parseDouble(parts[3]);
-				double frankRate = Double.parseDouble(parts[4]);
-				double yuanRate = Double.parseDouble(parts[5]);
-				days.add(new Day(date, euroRate, dollarRate, poundRate, frankRate, yuanRate));
+				days.add(new Day(date, parts[1], parts[2], parts[3], parts[4], parts[5]));
 				lineCounter++;
 			}
 		} catch (FileNotFoundException e) {
