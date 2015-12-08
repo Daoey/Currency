@@ -14,7 +14,12 @@
 		
 		<target name= "compile">
 			<mkdir dir="${classes.dir}"/>
-	        <javac srcdir="${src.dir}" destdir="${classes.dir}"/>
+	        <javac srcdir="${src.dir}" destdir="${classes.dir}">
+	        	<classpath>
+	        		<pathelement path="lib/junit-4.12.jar"/>
+	        		<pathelement path="lib/hamcrest-core-1.3.jar"/>
+	        	</classpath>
+	        </javac>
 		</target>
 
 		<target name="jar" depends="compile">
