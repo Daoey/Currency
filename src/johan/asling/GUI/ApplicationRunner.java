@@ -158,11 +158,15 @@ public class ApplicationRunner extends Application{
 			buttonResult.setText("Highest rate: 1 EUR = " + bdHigh + " SEK and lowest: " + bdLow + " SEK");
 		});
 		
-		Button getMaxVolatilityWeek = new Button("Max volatility week");
-
+		Button getMaxVolatilityWeekEuro = new Button("Get week with the max volatility 2014");
+		getMaxVolatilityWeekEuro.setOnAction(event->{
+			int weekNumber = dayModel.getMaxVolatilityWeek("euro", 2014);
+			errorLabel.setText("");
+			buttonResult.setText("The week with the highest EUR volatility 2014 was week: " + weekNumber);
+		});
 		
 		HBox euroRow = new HBox();
-		euroRow.getChildren().addAll(averageRateYearEuro, averageRateMonthEuro, averageRateArbitraryEuro, getHighLowYearEuro, getHighLowMonthEuro, getHighLowArbitraryEuro);
+		euroRow.getChildren().addAll(averageRateYearEuro, averageRateMonthEuro, averageRateArbitraryEuro, getHighLowYearEuro, getHighLowMonthEuro, getHighLowArbitraryEuro, getMaxVolatilityWeekEuro);
 		return euroRow;
 	}
 
@@ -210,8 +214,15 @@ public class ApplicationRunner extends Application{
 			buttonResult.setText("Highest rate: 1 USD = " + bdHigh + " SEK and lowest: " + bdLow + " SEK");
 		});
 		
+		Button getMaxVolatilityWeekDollar = new Button("Get week with the max volatility 2014");
+		getMaxVolatilityWeekDollar.setOnAction(event->{
+			int weekNumber = dayModel.getMaxVolatilityWeek("dollar", 2014);
+			errorLabel.setText("");
+			buttonResult.setText("The week with the highest USD volatility 2014 was week: " + weekNumber);
+		});
+		
 		HBox dollarRow = new HBox();
-		dollarRow.getChildren().addAll(averageRateYearDollar, averageRateMonthDollar, averageRateArbitraryDollar, getHighLowYearDollar, getHighLowMonthDollar, getHighLowArbitraryDollar);
+		dollarRow.getChildren().addAll(averageRateYearDollar, averageRateMonthDollar, averageRateArbitraryDollar, getHighLowYearDollar, getHighLowMonthDollar, getHighLowArbitraryDollar, getMaxVolatilityWeekDollar);
 		return dollarRow;
 	}
 
@@ -259,8 +270,15 @@ public class ApplicationRunner extends Application{
 			buttonResult.setText("Highest rate: 1 GBP = " + bdHigh + " SEK and lowest: " + bdLow + " SEK");
 		});
 		
+		Button getMaxVolatilityWeekPound = new Button("Get week with the max volatility 2014");
+		getMaxVolatilityWeekPound.setOnAction(event->{
+			int weekNumber = dayModel.getMaxVolatilityWeek("pound", 2014);
+			errorLabel.setText("");
+			buttonResult.setText("The week with the highest GBP volatility 2014 was week: " + weekNumber);
+		});
+		
 		HBox poundRow = new HBox();
-		poundRow.getChildren().addAll(averageRateYearPound, averageRateMonthPound, averageRateArbitraryPound, getHighLowYearPound, getHighLowMonthEuro, getHighLowArbitraryPound);
+		poundRow.getChildren().addAll(averageRateYearPound, averageRateMonthPound, averageRateArbitraryPound, getHighLowYearPound, getHighLowMonthEuro, getHighLowArbitraryPound, getMaxVolatilityWeekPound);
 		return poundRow;
 	}
 
@@ -308,8 +326,15 @@ public class ApplicationRunner extends Application{
 			buttonResult.setText("Highest rate: 1 CHF = " + bdHigh + " SEK and lowest: " + bdLow + " SEK");
 		});
 		
+		Button getMaxVolatilityWeekFrank = new Button("Get week with the max volatility 2014");
+		getMaxVolatilityWeekFrank.setOnAction(event->{
+			int weekNumber = dayModel.getMaxVolatilityWeek("frank", 2014);
+			errorLabel.setText("");
+			buttonResult.setText("The week with the highest CHF volatility 2014 was week: " + weekNumber);
+		});
+		
 		HBox frankRow = new HBox();
-		frankRow.getChildren().addAll(averageRateYearFrank, averageRateMonthFrank, averageRateArbitraryFrank, getHighLowYearFrank, getHighLowMonthFrank, getHighLowArbitraryFrank);
+		frankRow.getChildren().addAll(averageRateYearFrank, averageRateMonthFrank, averageRateArbitraryFrank, getHighLowYearFrank, getHighLowMonthFrank, getHighLowArbitraryFrank, getMaxVolatilityWeekFrank);
 		return frankRow;
 	}
 
@@ -357,9 +382,15 @@ public class ApplicationRunner extends Application{
 			buttonResult.setText("Highest rate: 1 CNY = " + bdHigh + " SEK and lowest: " + bdLow + " SEK");
 		});
 		
-				
+		Button getMaxVolatilityWeekYuan = new Button("Get week with the max volatility 2014");
+		getMaxVolatilityWeekYuan.setOnAction(event->{
+			int weekNumber = dayModel.getMaxVolatilityWeek("yuan", 2014);
+			errorLabel.setText("");
+			buttonResult.setText("The week with the highest CNY volatility 2014 was week: " + weekNumber);
+		});
+		
 		HBox yuanRow = new HBox();
-		yuanRow.getChildren().addAll(averageRateYearYuan, averageRateMonthYuan, averageRateArbitraryYuan, getHighLowYearYuan, getHighLowMonthYuan, getHighLowArbitraryYuan);
+		yuanRow.getChildren().addAll(averageRateYearYuan, averageRateMonthYuan, averageRateArbitraryYuan, getHighLowYearYuan, getHighLowMonthYuan, getHighLowArbitraryYuan, getMaxVolatilityWeekYuan);
 		return yuanRow;
 	}
 	

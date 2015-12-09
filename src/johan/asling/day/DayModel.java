@@ -715,11 +715,11 @@ public class DayModel {
 		 BigDecimal volatility;
 		 BigDecimal maxVolatility = BigDecimal.ZERO;
 		 
-		 LocalDate toDate = fromDate.plusDays(7);
+		 LocalDate toDate = fromDate.plusDays(6);
 		 System.out.println(toDate);
 		 
-		 while(toDate.isBefore(LocalDate.of(year + 1, 1, 4))){
-			 System.out.println("Test");
+		 //The week with the date January 4 is always week 1, ISO standard
+		 while(toDate.isBefore(LocalDate.of(year + 1, 1, 4))){ 
 			 volatility = getVolatilty(currency, fromDate, toDate);
 			 if(volatility.compareTo(maxVolatility)>0){
 				 maxVolatilityWeek = weekCounter;
