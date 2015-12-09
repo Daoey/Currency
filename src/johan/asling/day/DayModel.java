@@ -9,10 +9,10 @@ import johan.asling.GUI.ApplicationRunner;
 
 public class DayModel {
 
-	/**Changes the display of rates from 1 SEK is worth x OTHERCURRENCY 
+	/**Changes the rates from 1 SEK is worth x OTHERCURRENCY 
 	 * to 1 OTHERCURRENCY is worth x SEK.
 	 * @param rate The ratio between SEK and OTHERCURENCY.
-	 * @return The ratio between OTHERCURRENCY and SEK. Invalid rates return -1.
+	 * @return The ratio between OTHERCURRENCY and SEK. Invalid rates return 0.
 	 */
 	public static BigDecimal getValuesAsXEqualsSek(BigDecimal rate) {
 		if(rate.compareTo(BigDecimal.ZERO)<=0)
@@ -713,7 +713,7 @@ public class DayModel {
 		 return currencyMaxVolatility;
 	 }
 	 
-	 /**This function finds the week with the highest volatility of specified currency.
+	 /**This method finds the week with the highest volatility of specified currency.
 	  * 
 	  * @param currency The currency you would like to find the week with the highest volatility.
 	  * @param year The year you want to investigate. Currently years 2014 and 2013 are supported.

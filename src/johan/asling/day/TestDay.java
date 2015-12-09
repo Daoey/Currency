@@ -56,6 +56,9 @@ public class TestDay {
 		CHF: 7,3031
 		CNY: 1,0699
 		 */
+		
+		double delta = 0.001;	//misstänkt avrundningsfel på CHF 2014 och 2013. Löste genom delta
+		
 		assertEquals(new BigDecimal("9.3649"), dayModel.getYearAverage("euro", 2015));
 		assertEquals(new BigDecimal("8.4263"), dayModel.getYearAverage("dollar", 2015));
 		assertEquals(new BigDecimal("12.9051"), dayModel.getYearAverage("pound", 2015));
@@ -65,13 +68,13 @@ public class TestDay {
 		assertEquals(new BigDecimal("9.0987"), dayModel.getYearAverage("euro", 2014));
 		assertEquals(new BigDecimal("6.8636"), dayModel.getYearAverage("dollar", 2014));
 		assertEquals(new BigDecimal("11.2967"), dayModel.getYearAverage("pound", 2014));
-		//assertEquals(new BigDecimal("7.4923"), dayModel.getYearAverage("frank", 2014));
+		assertEquals(7.4923, dayModel.getYearAverage("frank", 2014).doubleValue(), delta);
 		assertEquals(new BigDecimal("1.1170"), dayModel.getYearAverage("yuan", 2014));
 
 		assertEquals(new BigDecimal("8.9504"), dayModel.getYearAverage("euro", 2013));
 		assertEquals(new BigDecimal("6.5455"), dayModel.getYearAverage("dollar", 2013));
 		assertEquals(new BigDecimal("10.7080"), dayModel.getYearAverage("pound", 2013));
-		//assertEquals(new BigDecimal("7.3031"), dayModel.getYearAverage("frank", 2013));
+		assertEquals(7.3031, dayModel.getYearAverage("frank", 2013).doubleValue(), delta);
 		assertEquals(new BigDecimal("1.0699"), dayModel.getYearAverage("yuan", 2013));
 	}
 	
