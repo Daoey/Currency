@@ -716,7 +716,6 @@ public class DayModel {
 		 BigDecimal maxVolatility = BigDecimal.ZERO;
 		 
 		 LocalDate toDate = fromDate.plusDays(6);
-		 System.out.println(toDate);
 		 
 		 //The week with the date January 4 is always week 1, ISO standard
 		 while(toDate.isBefore(LocalDate.of(year + 1, 1, 4))){ 
@@ -760,7 +759,74 @@ public class DayModel {
 	 }
 	 
 	 public BigDecimal getAverage(String currency, LocalDate fromDate, LocalDate toDate, DayOfWeek weekDay){
-		 return BigDecimal.ZERO;
+		 
+		 int dayCounter = 0;
+		 BigDecimal rates = BigDecimal.ZERO;
+		 
+		 if(currency=="euro"){
+			 for(int i=0; i<ApplicationRunner.days.size(); i++){
+				 if(((ApplicationRunner.days.elementAt(i).getDate().isAfter(fromDate) && ApplicationRunner.days.elementAt(i).getDate().isBefore(toDate))
+							|| ApplicationRunner.days.elementAt(i).getDate().isEqual(fromDate) || ApplicationRunner.days.elementAt(i).getDate().isEqual(toDate))){
+					 if(weekDay == ApplicationRunner.days.get(i).getDate().getDayOfWeek()){
+						 rates = rates.add(DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getEuroRate())));
+						 dayCounter++;
+					 }
+				 }
+			 }
+		 }
+		 
+		 if(currency=="dollar"){
+			 for(int i=0; i<ApplicationRunner.days.size(); i++){
+				 if(((ApplicationRunner.days.elementAt(i).getDate().isAfter(fromDate) && ApplicationRunner.days.elementAt(i).getDate().isBefore(toDate))
+							|| ApplicationRunner.days.elementAt(i).getDate().isEqual(fromDate) || ApplicationRunner.days.elementAt(i).getDate().isEqual(toDate))){
+					 if(weekDay == ApplicationRunner.days.get(i).getDate().getDayOfWeek()){
+						 rates = rates.add(DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getDollarRate())));
+						 dayCounter++;
+					 }
+				 }
+			 }
+		 }
+		 
+		 if(currency=="pound"){
+			 for(int i=0; i<ApplicationRunner.days.size(); i++){
+				 if(((ApplicationRunner.days.elementAt(i).getDate().isAfter(fromDate) && ApplicationRunner.days.elementAt(i).getDate().isBefore(toDate))
+							|| ApplicationRunner.days.elementAt(i).getDate().isEqual(fromDate) || ApplicationRunner.days.elementAt(i).getDate().isEqual(toDate))){
+					 if(weekDay == ApplicationRunner.days.get(i).getDate().getDayOfWeek()){
+						 rates = rates.add(DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getPoundRate())));
+						 dayCounter++;
+					 }
+				 }
+			 }
+		 }
+		 
+		 if(currency=="frank"){
+			 for(int i=0; i<ApplicationRunner.days.size(); i++){
+				 if(((ApplicationRunner.days.elementAt(i).getDate().isAfter(fromDate) && ApplicationRunner.days.elementAt(i).getDate().isBefore(toDate))
+							|| ApplicationRunner.days.elementAt(i).getDate().isEqual(fromDate) || ApplicationRunner.days.elementAt(i).getDate().isEqual(toDate))){
+					 if(weekDay == ApplicationRunner.days.get(i).getDate().getDayOfWeek()){
+						 rates = rates.add(DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getFrankRate())));
+						 dayCounter++;
+					 }
+				 }
+			 }
+		 }
+		 
+		 if(currency=="yuan"){
+			 for(int i=0; i<ApplicationRunner.days.size(); i++){
+				 if(((ApplicationRunner.days.elementAt(i).getDate().isAfter(fromDate) && ApplicationRunner.days.elementAt(i).getDate().isBefore(toDate))
+							|| ApplicationRunner.days.elementAt(i).getDate().isEqual(fromDate) || ApplicationRunner.days.elementAt(i).getDate().isEqual(toDate))){
+					 if(weekDay == ApplicationRunner.days.get(i).getDate().getDayOfWeek()){
+						 rates = rates.add(DayModel.getValuesAsXEqualsSek(new BigDecimal(ApplicationRunner.days.get(i).getYuanRate())));
+						 dayCounter++;
+					 }
+				 }
+			 }
+		 }
+		 
+		 if(dayCounter==0)
+			 return BigDecimal.ZERO;
+		 
+		 return rates.divide(new BigDecimal(dayCounter), 4, RoundingMode.HALF_UP);
 	 }
 
 }

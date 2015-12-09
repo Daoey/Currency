@@ -7,6 +7,7 @@ import johan.asling.GUI.ApplicationRunner;
 import static org.junit.Assert.assertEquals;
 
 import java.math.BigDecimal;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 public class TestDay {
@@ -418,6 +419,12 @@ public class TestDay {
 			2014-02-02 tom 2015-05-15 - wednesday
 			CNY: 1,1927 (count= 67, sum=70,9088)
 		 */
-		;
+		
+		assertEquals(new BigDecimal("9.2737"), dayModel.getAverage("euro", LocalDate.parse("2015-11-14"), LocalDate.parse("2015-11-30"), DayOfWeek.MONDAY));;
+		assertEquals(new BigDecimal("8.7260"), dayModel.getAverage("dollar", LocalDate.parse("2015-11-16"), LocalDate.parse("2015-11-30"), DayOfWeek.MONDAY));;
+		assertEquals(new BigDecimal("13.1755"), dayModel.getAverage("pound", LocalDate.parse("2015-11-17"), LocalDate.parse("2015-11-30"), DayOfWeek.MONDAY));;
+		assertEquals(new BigDecimal("8.5543"), dayModel.getAverage("frank", LocalDate.parse("2015-11-17"), LocalDate.parse("2015-11-29"), DayOfWeek.MONDAY));;
+		assertEquals(new BigDecimal("1.1927"), dayModel.getAverage("yuan", LocalDate.parse("2014-02-02"), LocalDate.parse("2015-05-15"), DayOfWeek.WEDNESDAY));;
+
 	}
 }
