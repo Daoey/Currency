@@ -165,8 +165,15 @@ public class ApplicationRunner extends Application{
 			buttonResult.setText("The week with the highest EUR volatility 2014 was week: " + weekNumber);
 		});
 		
+		Button getAverageWeekDayEuro = new Button("Average rate this weekday");
+		getAverageWeekDayEuro.setOnAction(event->{
+			BigDecimal bd = dayModel.getAverage("euro", fromDatePicker.getValue(), toDatePicker.getValue(), mainDatePicker.getValue().getDayOfWeek());
+			errorLabel.setText("");
+			buttonResult.setText("The average EUR rate on " + mainDatePicker.getValue().getDayOfWeek() + "S in the given period was " + bd);
+		});
+		
 		HBox euroRow = new HBox();
-		euroRow.getChildren().addAll(averageRateYearEuro, averageRateMonthEuro, averageRateArbitraryEuro, getHighLowYearEuro, getHighLowMonthEuro, getHighLowArbitraryEuro, getMaxVolatilityWeekEuro);
+		euroRow.getChildren().addAll(averageRateYearEuro, averageRateMonthEuro, averageRateArbitraryEuro, getHighLowYearEuro, getHighLowMonthEuro, getHighLowArbitraryEuro, getMaxVolatilityWeekEuro, getAverageWeekDayEuro);
 		return euroRow;
 	}
 
@@ -221,8 +228,15 @@ public class ApplicationRunner extends Application{
 			buttonResult.setText("The week with the highest USD volatility 2014 was week: " + weekNumber);
 		});
 		
+		Button getAverageWeekDayDollar = new Button("Average rate this weekday");
+		getAverageWeekDayDollar.setOnAction(event->{
+			BigDecimal bd = dayModel.getAverage("dollar", fromDatePicker.getValue(), toDatePicker.getValue(), mainDatePicker.getValue().getDayOfWeek());
+			errorLabel.setText("");
+			buttonResult.setText("The average USD rate on " + mainDatePicker.getValue().getDayOfWeek() + "S in the given period was " + bd);
+		});
+		
 		HBox dollarRow = new HBox();
-		dollarRow.getChildren().addAll(averageRateYearDollar, averageRateMonthDollar, averageRateArbitraryDollar, getHighLowYearDollar, getHighLowMonthDollar, getHighLowArbitraryDollar, getMaxVolatilityWeekDollar);
+		dollarRow.getChildren().addAll(averageRateYearDollar, averageRateMonthDollar, averageRateArbitraryDollar, getHighLowYearDollar, getHighLowMonthDollar, getHighLowArbitraryDollar, getMaxVolatilityWeekDollar, getAverageWeekDayDollar);
 		return dollarRow;
 	}
 
@@ -277,8 +291,15 @@ public class ApplicationRunner extends Application{
 			buttonResult.setText("The week with the highest GBP volatility 2014 was week: " + weekNumber);
 		});
 		
+		Button getAverageWeekDayPound = new Button("Average rate this weekday");
+		getAverageWeekDayPound.setOnAction(event->{
+			BigDecimal bd = dayModel.getAverage("euro", fromDatePicker.getValue(), toDatePicker.getValue(), mainDatePicker.getValue().getDayOfWeek());
+			errorLabel.setText("");
+			buttonResult.setText("The average GBP rate on " + mainDatePicker.getValue().getDayOfWeek() + "S in the given period was " + bd);
+		});
+		
 		HBox poundRow = new HBox();
-		poundRow.getChildren().addAll(averageRateYearPound, averageRateMonthPound, averageRateArbitraryPound, getHighLowYearPound, getHighLowMonthEuro, getHighLowArbitraryPound, getMaxVolatilityWeekPound);
+		poundRow.getChildren().addAll(averageRateYearPound, averageRateMonthPound, averageRateArbitraryPound, getHighLowYearPound, getHighLowMonthEuro, getHighLowArbitraryPound, getMaxVolatilityWeekPound, getAverageWeekDayPound);
 		return poundRow;
 	}
 
@@ -333,8 +354,15 @@ public class ApplicationRunner extends Application{
 			buttonResult.setText("The week with the highest CHF volatility 2014 was week: " + weekNumber);
 		});
 		
+		Button getAverageWeekDayFrank = new Button("Average rate this weekday");
+		getAverageWeekDayFrank.setOnAction(event->{
+			BigDecimal bd = dayModel.getAverage("frank", fromDatePicker.getValue(), toDatePicker.getValue(), mainDatePicker.getValue().getDayOfWeek());
+			errorLabel.setText("");
+			buttonResult.setText("The average CHF rate on " + mainDatePicker.getValue().getDayOfWeek() + "S in the given period was " + bd);
+		});
+		
 		HBox frankRow = new HBox();
-		frankRow.getChildren().addAll(averageRateYearFrank, averageRateMonthFrank, averageRateArbitraryFrank, getHighLowYearFrank, getHighLowMonthFrank, getHighLowArbitraryFrank, getMaxVolatilityWeekFrank);
+		frankRow.getChildren().addAll(averageRateYearFrank, averageRateMonthFrank, averageRateArbitraryFrank, getHighLowYearFrank, getHighLowMonthFrank, getHighLowArbitraryFrank, getMaxVolatilityWeekFrank, getAverageWeekDayFrank);
 		return frankRow;
 	}
 
@@ -389,8 +417,15 @@ public class ApplicationRunner extends Application{
 			buttonResult.setText("The week with the highest CNY volatility 2014 was week: " + weekNumber);
 		});
 		
+		Button getAverageWeekDayYuan = new Button("Average rate this weekday");
+		getAverageWeekDayYuan.setOnAction(event->{
+			BigDecimal bd = dayModel.getAverage("yuan", fromDatePicker.getValue(), toDatePicker.getValue(), mainDatePicker.getValue().getDayOfWeek());
+			errorLabel.setText("");
+			buttonResult.setText("The average CNY rate on " + mainDatePicker.getValue().getDayOfWeek() + "S in the given period was " + bd);
+		});
+		
 		HBox yuanRow = new HBox();
-		yuanRow.getChildren().addAll(averageRateYearYuan, averageRateMonthYuan, averageRateArbitraryYuan, getHighLowYearYuan, getHighLowMonthYuan, getHighLowArbitraryYuan, getMaxVolatilityWeekYuan);
+		yuanRow.getChildren().addAll(averageRateYearYuan, averageRateMonthYuan, averageRateArbitraryYuan, getHighLowYearYuan, getHighLowMonthYuan, getHighLowArbitraryYuan, getMaxVolatilityWeekYuan, getAverageWeekDayYuan);
 		return yuanRow;
 	}
 	
