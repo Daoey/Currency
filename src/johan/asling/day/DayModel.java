@@ -607,6 +607,12 @@ public class DayModel {
 		return DayModel.getValuesAsXEqualsSek(lowest.setScale(4, RoundingMode.HALF_UP));
 	 }
 	 
+	 /**This method returns the currency that had the highest delta during the period specified
+	  * 
+	  * @param fromDate	From this date
+	  * @param toDate	To this date
+	  * @return	The highest delta currency (or EUR if no comparable data)
+	  */
 	 public String getMaxDeltaCurrency(LocalDate fromDate, LocalDate toDate){
 		 
 		 BigDecimal euroRateFirst = BigDecimal.ZERO;
@@ -670,6 +676,13 @@ public class DayModel {
 		return maxDeltaCurrency;
 	 }
 	 
+	 /**This method calculates the currency with the highest volatility in a specified period. 
+	  * In other words, the currency with the largest difference between its highMark and lowMark in this period.
+	  * 
+	  * @param fromDate From this date
+	  * @param toDate	To this date
+	  * @return	The highest volatility currency (or EUR if no comparable date)
+	  */
 	 public String getMaxVolatilityCurrency(LocalDate fromDate, LocalDate toDate){
 		 
 		 BigDecimal maxEuroVolatality = getLowMark("euro", fromDate, toDate).subtract(getHighMark("euro", fromDate, toDate));
@@ -700,6 +713,12 @@ public class DayModel {
 		 return currencyMaxVolatility;
 	 }
 	 
+	 /**This function finds the week with the highest volatility of specified currency.
+	  * 
+	  * @param currency The currency you would like to find the week with the highest volatility.
+	  * @param year The year you want to investigate. Currently years 2014 and 2013 are supported.
+	  * @return The week number of the week with the highest volatility.
+	  */
 	 public int getMaxVolatilityWeek(String currency, int year){
 		 
 		 LocalDate fromDate;
@@ -733,6 +752,13 @@ public class DayModel {
 		 return maxVolatilityWeek;
 	 }
 	 
+	 /**Helper function for maxVolatilityWeek. Gets the volatility for specified currency in selected period.
+	  * 
+	  * @param currency The currency you would like the volatility of
+	  * @param fromDate	From this date
+	  * @param toDate	To this date
+	  * @return	The volatility in this period
+	  */
 	 private BigDecimal getVolatilty(String currency, LocalDate fromDate, LocalDate toDate){
 		 BigDecimal volatility;
 		 if(currency=="euro"){
@@ -758,6 +784,14 @@ public class DayModel {
 		 return BigDecimal.ZERO;
 	 }
 	 
+	 /**This method calculates the average rate on a specific day of the week in a given period.
+	  * 
+	  * @param currency The currency you would like to see the conversion rate of
+	  * @param fromDate From this date
+	  * @param toDate To this date
+	  * @param weekDay The weekday you want the average rate of
+	  * @return The average rate of specified currency on this day of the week inside this period
+	  */
 	 public BigDecimal getAverage(String currency, LocalDate fromDate, LocalDate toDate, DayOfWeek weekDay){
 		 
 		 int dayCounter = 0;
