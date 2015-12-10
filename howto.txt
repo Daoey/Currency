@@ -1,0 +1,13 @@
+Currency HowTo
+
+Installation
+
+In order to run this application make sure you have the latest Java correctly installed.
+https://www.java.com/sv/download/
+
+Running Application
+
+There is several ways to run the application.
+
+1. The easiest way is to run the currency.jar file in the currency home folder.
+2. Run with ant.
